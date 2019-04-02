@@ -10,7 +10,7 @@
     <div class="wrapper">
         <div class="content-wrapper">
             <h1>Edit Page</h1>
-            <form method="POST" action="{{ route('page.update', $pages[0]->id) }}">
+            <form method="POST" action="{{ route('page.update', $page->id) }}">
                 @csrf
                 @method('PUT')
 
@@ -19,13 +19,13 @@
                     <select id="inputState" class="form-control" name="navitem_id">
                         <option>Choose...</option>
                         @foreach($navitems as $item)
-                            <option value="{{ $item->id }}" {{ $item->id === $pages[0]->navitem_id ? 'selected' : '' }}>{{ $item->name }}</option>
+                            <option value="{{ $item->id }}" {{ $item->id === $pages->id ? 'selected' : '' }}>{{ $item->name }}</option>
                         @endforeach
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Page Content</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="content">{{ $pages[0]->content }}</textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="content">{{ $page->content }}</textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Save</button>
             </form>

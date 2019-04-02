@@ -25,11 +25,12 @@
                 @foreach($pages as $page)
                     <tr>
                         <th scope="row">{{ $page->id }}</th>
-                        <td>{{ $page->navitem->name }}</td>
-                        <td>{{ $page->navitem->uri }}</td>
+                        <td>{{ $page->navitem->name ?? ' '}}</td>
+                        <td>{{ $page->navitem->uri ?? ' '}}</td>
                         <td>{{ $page->content }}</td>
                         <td>
                             <a role="button" href="{{ route('page.edit', $page->id) }}" class="btn btn-link">edit</a>
+                            <a role="button" href="{{ route('page.delete', $page->id) }}" class="btn btn-link text-danger">delete</a>
                         </td>
                     </tr>
                 @endforeach

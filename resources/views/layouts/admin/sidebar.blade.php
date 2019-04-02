@@ -27,7 +27,6 @@
                 </a>
                 <!-- sub nav -->
                 <ul class="treeview-menu">
-                    <li class="{{ Request::is('about') ? 'active' : '' }}"><a href="{{ route('about.edit', 1) }}"><i class="fas fa-chevron-right"></i></i> About</a></li>
                     <li class="{{ Request::is('page') || Request::is('page/create') ? 'active' : '' }}"><a href="{{ route('page.create') }}"><i class="fas fa-chevron-right"></i></i> Create</a></li>
                     <li class="{{ Request::is('page') ? 'active' : '' }}"><a href="{{ route('page.index') }}"><i class="fas fa-chevron-right"></i></i> All Pages</a></li>
                 </ul>

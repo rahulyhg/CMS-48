@@ -79,7 +79,8 @@ class NavItemController extends Controller
 //        }
 
 //        dd($request->validated());
-        $navitem->update($request->validated());
+        $test = $navitem->update($request->validated());
+        dd($test);
 
         // Add uri to navitems
         // NavItem::create([ 'name' => $item, 'uri' => '/' . strtolower($item)]);
@@ -90,11 +91,13 @@ class NavItemController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\NavItem  $navitem
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(NavItem $navitem)
     {
-        //
+        $navitem->delete();
+
+        return back();
     }
 }

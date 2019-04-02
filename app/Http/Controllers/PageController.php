@@ -39,9 +39,11 @@ class PageController extends Controller
      * @param  \Illuminate\Http\PageRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PAgeRequest $request)
+    public function store(PageRequest $request)
     {
         Page::create($request->validated());
+
+        return back();
     }
 
     /**
@@ -66,10 +68,10 @@ class PageController extends Controller
      */
     public function edit(Page $page)
     {
-        $pages = Page::with('navitem')->get();
+        $pages = $page->navitem;
         $navitems = NavItem::all();
 
-        return view('page.edit', compact('pages', 'navitems'));
+        return view('page.edit', compact('pages', 'navitems', 'page'));
     }
 
     /**
@@ -89,11 +91,25 @@ class PageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Page $page
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Page $page)
     {
-        //
+        $page->delete();
+
+        return back();
+    }
+
+    public function getPage(Request $request)
+    {
+        $navItem = NavItem::where('uri', $request->path())->get();
+        $page = Page::where('navitem_id', $navItem[0]->id)->get();
+
+        if(isset($page[0])) {
+            return view('welcome', compact('page'));
+        }
+
+        abort(404);
     }
 }

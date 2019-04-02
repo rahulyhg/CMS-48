@@ -19,7 +19,7 @@ Route::get('/admin', 'Auth\LoginController@showLoginForm')->name('admin');
 Route::post('/login', 'Auth\LoginController@login')->name('login');
 Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
-Route::get('/dashboard', function() {
+Route::middleware('auth')->get('/dashboard', function() {
     return view('dashboard');
 });
 
@@ -27,17 +27,23 @@ Route::get('/dashboard', function() {
 //    return view('dashboard');
 //})->middleware('auth');
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resources([
     'page' => 'PageController',
     'nav' => 'NavController',
-    'about' => 'AboutController',
     'navitem' => 'NavItemController'
 
 ]);
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
+// Testing new code
+
+Route::get('{slug}', 'PageController@getPage');
+
+Route::get('page/{page}/delete', 'PageController@destroy')->name('page.delete');
+
+Route::get('navitem/{navitem}/delete', 'NavItemController@destroy')->name('navitem.delete');
