@@ -43,7 +43,7 @@ class PageController extends Controller
     {
         Page::create($request->validated());
 
-        return back();
+        return redirect()->route('page.index');
     }
 
     /**

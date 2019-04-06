@@ -38,7 +38,7 @@
               <i class="fa fa-angle-left pull-right"></i>
                         <!-- sub nav -->
                 <ul class="treeview-menu">
-                    <li><a href="index.html"><i class="fas fa-chevron-right"></i></i> All Messages</a></li>
+                    <li><a href="{{ route('message.index') }}"><i class="fas fa-chevron-right"></i> All Messages</a></li>
                 </ul>
             </span>
                 </a>
@@ -47,7 +47,12 @@
                 <a href="#">
                     <i class="fas fa-cogs mr-4"></i><span>Settings</span>
                     <span class="pull-right-container">
-            </span>
+                           <i class="fa fa-angle-left pull-right"></i>
+                        <!-- sub nav -->
+                        <ul class="treeview-menu">
+                            <li><a href="{{ route('users.index') }}"><i class="fas fa-chevron-right"></i> User</a></li>
+                        </ul>
+                    </span>
                 </a>
             </li>
         </ul>

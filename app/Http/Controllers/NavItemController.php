@@ -77,10 +77,9 @@ class NavItemController extends Controller
 //        foreach($request->validated() as $item) {
 //            NavItem::create([ 'name' => $item ]);
 //        }
-
+            dd($navitem);
 //        dd($request->validated());
         $test = $navitem->update($request->validated());
-        dd($test);
 
         // Add uri to navitems
         // NavItem::create([ 'name' => $item, 'uri' => '/' . strtolower($item)]);

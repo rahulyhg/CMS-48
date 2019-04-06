@@ -24,13 +24,17 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Page Content</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="content"></textarea>
+
+                    <input id="content" type="hidden" name="content">
+                    <trix-editor input="content"></trix-editor>
+
                 </div>
                 <button type="submit" class="btn btn-primary">Save</button>
             </form>
         </div>
     </div>
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/trix.js') }}"></script>
     </body>
     </html>
 @endsection

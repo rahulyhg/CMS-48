@@ -32,7 +32,9 @@ Route::middleware('auth')->get('/dashboard', function() {
 Route::resources([
     'page' => 'PageController',
     'nav' => 'NavController',
-    'navitem' => 'NavItemController'
+    'navitem' => 'NavItemController',
+    'message' => 'MessageController',
+    'users' => 'UserController'
 
 ]);
 
