@@ -38,7 +38,7 @@
                     </li>
                     <!-- Control Sidebar Toggle Button -->
                     <li>
-                        <a href="#" data-toggle="control-sidebar"><i class="fas fa-bars"></i></a>
+                        {{--<a href="#" data-toggle="control-sidebar"><i class="fas fa-bars"></i></a>--}}
                     </li>
                 </ul>
             </div>

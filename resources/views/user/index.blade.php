@@ -22,9 +22,9 @@
                 @foreach($users as $item)
                 <tr>
                 <th scope="row">{{ $item->id }}</th>
-                <td>{{ $item->name }}</td>
+                <td>{{ $item->first_name . ' ' . $item->last_name }}</td>
                 <td>{{ $item->email }}</td>
-                <td>{{ $item->role }}</td>
+                <td>{{ $item->role->name }}</td>
                 <td>
                 <a role="button" href="{{ route('message.show', $item->id) }}" class="btn btn-link">edit</a>
                 </td>
@@ -39,4 +39,4 @@
     </body>
     </html>
 @endsection
-// Only admin can view edit button
+// Only admin can view edit button for other users but admin cannot edit themselves

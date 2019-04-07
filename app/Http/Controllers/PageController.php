@@ -41,7 +41,9 @@ class PageController extends Controller
      */
     public function store(PageRequest $request)
     {
-        Page::create($request->validated());
+        $new_page = Page::create($request->validated());
+
+        $new_page->navitem->update(['active' => 1]);
 
         return redirect()->route('page.index');
     }

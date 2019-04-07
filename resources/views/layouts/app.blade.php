@@ -44,7 +44,7 @@
                             {{--<li class="nav-item"><a class="nav-link" href="#">{{ $value }}</a></li>--}}
                         {{--@endforeach--}}
 
-                        @foreach(\App\Models\NavItem::all() as $item )
+                        @foreach(\App\Models\NavItem::where('active', '=', 1)->get() as $item )
                             {{--<li class="nav-item"><a class="nav-link" href="{{ route('page.show', $item->id) }}">{{ $item-> name}}</a></li>--}}
                             <li class="nav-item"><a class="nav-link" href="/{{ $item->uri }}">{{ $item-> name}}</a></li>
                         @endforeach

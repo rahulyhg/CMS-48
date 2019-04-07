@@ -39,7 +39,7 @@ class NavItemController extends Controller
      */
     public function store(NavItemRequest $request)
     {
-        NavItem::create($request->validated());
+        NavItem::create($request->merge(['active' => 0])->toArray());
 
         return redirect()->route('navitem.index');
     }
@@ -99,4 +99,9 @@ class NavItemController extends Controller
 
         return back();
     }
+
+//    public function updateStatus(Navitem $navitem)
+//    {
+//        dd($navitem);
+//    }
 }

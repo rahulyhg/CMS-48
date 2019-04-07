@@ -38,6 +38,8 @@ Route::resources([
 
 ]);
 
+//Route::get('/navitem/{id}', 'NavItemController@updateStatus')->name('navitem.active');
+
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
