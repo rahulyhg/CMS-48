@@ -17,7 +17,7 @@ class CreateNavitemsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('uri');
-            $table->boolean('sub_nav')->nullable();
+            $table->boolean('parent_id')->nullable();
             $table->tinyInteger('active');
         });
     }
