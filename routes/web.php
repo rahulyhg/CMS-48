@@ -46,7 +46,7 @@ Auth::routes();
 
 // Testing new code
 
-Route::get('{slug}', 'PageController@getPage');
+// Route::get('{slug}', 'PageController@getPage'); Add middleware to this route and check for the dynamic pages
 
 Route::get('page/{page}/delete', 'PageController@destroy')->name('page.delete');
 
