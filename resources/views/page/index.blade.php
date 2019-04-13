@@ -2,10 +2,6 @@
 
 @extends('layouts.admin.app')
 
-@extends('layouts.admin.nav')
-
-@extends('layouts.admin.sidebar')
-
 @section('content')
     <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -16,7 +12,7 @@
                 <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Name</th>
+                    <th scope="col">Title</th>
                     <th scope="col">URI</th>
                 </tr>
                 </thead>
@@ -24,8 +20,8 @@
                 @foreach($pages as $page)
                     <tr>
                         <th scope="row">{{ $page->id }}</th>
-                        <td>{{ $page->navitem->name ?? ' '}}</td>
-                        <td>{{ $page->navitem->uri ?? ' '}}</td>
+                        <td>{{ $page->title ?? ' '}}</td>
+                        <td>{{ $page->navitem->uri ?? 'None'}}</td>
                         <td>
                             <a role="button" href="{{ route('page.edit', $page->id) }}" class="btn btn-link">edit</a>
                             <a role="button" href="{{ route('page.delete', $page->id) }}" class="btn btn-link text-danger">delete</a>

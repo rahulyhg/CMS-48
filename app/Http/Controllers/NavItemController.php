@@ -41,7 +41,7 @@ class NavItemController extends Controller
      */
     public function store(NavItemRequest $request)
     {
-        NavItem::create($request->merge(['active' => 0])->toArray());
+        NavItem::create($request->validated());
 
         return redirect()->route('navitem.index');
     }
@@ -81,9 +81,15 @@ class NavItemController extends Controller
 //        foreach($request->validated() as $item) {
 //            NavItem::create([ 'name' => $item ]);
 //        }
-            dd($navitem);
+//            dd($navitem);
 //        dd($request->validated());
-        $test = $navitem->update($request->validated());
+//        dd($navitem->parentNav());
+
+        $navitem->update($request->validated());
+
+        if ($request->validated()['parent_id']) {
+            $navitem->toggleActive();
+        }
 
         // Add uri to navitems
         // NavItem::create([ 'name' => $item, 'uri' => '/' . strtolower($item)]);
@@ -98,7 +104,12 @@ class NavItemController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(NavItem $navitem)
-    {
+    { // This works but its slow af.
+        foreach($navitem->pages as $page) {
+            $page->navitem_id = 0;
+            $page->save();
+        }
+
         $navitem->delete();
 
         return back();

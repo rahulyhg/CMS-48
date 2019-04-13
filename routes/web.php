@@ -29,14 +29,18 @@ Route::middleware('auth')->get('/dashboard', function() {
 
 //Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resources([
-    'page' => 'PageController',
-    'nav' => 'NavController',
-    'navitem' => 'NavItemController',
-    'message' => 'MessageController',
-    'users' => 'UserController'
+Route::middleware(['auth'])->group(function () {
+    Route::resources([
+        'page' => 'PageController',
+        'nav' => 'NavController',
+        'navitem' => 'NavItemController',
+        'message' => 'MessageController',
+        'users' => 'UserController',
+        'gallery' => 'GalleryController'
 
-]);
+    ]);
+});
+
 
 //Route::get('/navitem/{id}', 'NavItemController@updateStatus')->name('navitem.active');
 
@@ -45,9 +49,13 @@ Auth::routes();
 //Route::get('/home', 'HomeController@index')->name('home');
 
 // Testing new code
+//Route::get('/test', 'GalleryController@show');
 
-// Route::get('{slug}', 'PageController@getPage'); Add middleware to this route and check for the dynamic pages
+
 
 Route::get('page/{page}/delete', 'PageController@destroy')->name('page.delete');
 
 Route::get('navitem/{navitem}/delete', 'NavItemController@destroy')->name('navitem.delete');
+
+// Last
+Route::get('{slug}', 'PageController@getPage');

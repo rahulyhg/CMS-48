@@ -75,7 +75,7 @@
             <li class="header">MAIN NAVIGATION</li>
             <li class="treeview menu-open {{ Request::is('nav/create') || Request::is('nav') || Request::is('dashboard') || Request::is('navitem') || Request::is('navitem/edit') ? 'active' : '' }} ">
                 <a href="#">
-                    <i class="fas fa-location-arrow mr-4"></i> <span>Navigation</span>
+                    <i class="fas fa-compass mr-4"></i> <span>Navigation</span>
                     <span class="pull-right-container">
 	              <i class="fa fa-angle-left pull-right"></i>
 	            </span>
@@ -98,19 +98,28 @@
                     <li class="{{ Request::is('page') ? 'active' : '' }}"><a href="{{ route('page.index') }}"><i class="fas fa-chevron-right"></i></i> All Pages</a></li>
                 </ul>
             </li>
-            <li class="treeview menu-open">
+            <li class="{{ Request::is('gallery') || Request::is('gallery/*') ? 'active' : '' }}">
+                <a href="{{ route('gallery.index') }}">
+                    <i class="fas fa-hat-wizard mr-4"></i> <span>Gallery</span>
+                    <span class="pull-right-container">
+	              <i class="fa fa-angle-left pull-right"></i>
+                        <!-- sub nav -->
+	            </span>
+                </a>
+            </li>
+            <li class="treeview menu-open {{ Request::is('message') || Request::is('message/*') ? 'active' : '' }}">
                 <a href="#">
                     <i class="fas fa-inbox mr-4"></i> <span>Messages</span>
                     <span class="pull-right-container">
 	              <i class="fa fa-angle-left pull-right"></i>
                         <!-- sub nav -->
 	                <ul class="treeview-menu">
-	                    <li><a href="{{ route('message.index') }}"><i class="fas fa-chevron-right"></i> All Messages</a></li>
+	                    <li class="{{ Request::is('message') || Request::is('message/*') ? 'active' : '' }}"><a href="{{ route('message.index') }}"><i class="fas fa-chevron-right"></i> All Messages</a></li>
 	                </ul>
 	            </span>
                 </a>
             </li>
-            <li class="treeview menu-open">
+            <li class="treeview menu-open {{ Request::is('users') || Request::is('users/*') ? 'active' : '' }}">
                 <a href="#">
                     <i class="fas fa-cogs mr-4"></i><span>Settings</span>
                     <span class="pull-right-container">

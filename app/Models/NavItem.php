@@ -14,4 +14,22 @@ class NavItem extends Model
     {
         return '/' . str_replace(' ', '-', strtolower($str));
     }
+
+    // After a page is created NavItem active is set to True
+
+    public function toggleActive()
+    {
+        $this->active = 1 - $this->active;
+        $this->save();
+    }
+
+    public function pages()
+    {
+        return $this->hasMany(Page::class, 'navitem_id');
+    }
+
+    public function parentNav()
+    {
+        return $this->belongsTo(NavItem::class, 'parent_id');
+    }
 }

@@ -23,7 +23,7 @@
                         <th scope="row">{{ $item->id }}</th>
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->uri }}</td>
-                        <td>{{ $item->active ? 'active' : 'inactive'}}</td>
+                        <td>{{ $item->active ? 'Active' : 'Inactive'}}</td>
                         <td>
                             <a role="button" href="{{ route('navitem.edit', $item->id) }}" class="btn btn-link">edit</a>
                             <a role="button" href="{{ route('navitem.delete', $item->id) }}" class="btn text-danger">delete</a>

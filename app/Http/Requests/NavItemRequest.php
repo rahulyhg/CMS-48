@@ -26,9 +26,7 @@ class NavItemRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'uri' => 'required|string|max:255',
-            'uri' => 'required|string|max:255',
-            'parent_id' => 'sometimes|integer',
-            'active' => 'required|integer'
+            'parent_id' => 'nullable|integer'
         ];
     }
 }

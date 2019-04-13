@@ -16,8 +16,10 @@ class CreatePageTable extends Migration
         Schema::create('pages', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedInteger('navitem_id');
+            $table->string('title');
             $table->longText('content');
             $table->timestamps();
+//            $table->foreign('navitem_id')->references('id')->on('navitems');
         });
     }
 
@@ -28,6 +30,6 @@ class CreatePageTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('page');
+        Schema::dropIfExists('pages');
     }
 }

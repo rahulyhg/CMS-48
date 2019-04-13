@@ -25,7 +25,8 @@ class PageRequest extends FormRequest
     {
         return [
             'navitem_id' => 'required|integer',
-            'content' => 'required|string'
+            'content' => 'required|string',
+            'title' => 'required|string'
         ];
     }
 }

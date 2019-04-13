@@ -1,10 +1,6 @@
 
 @extends('layouts.admin.app')
 
-@extends('layouts.admin.nav')
-
-@extends('layouts.admin.sidebar')
-
 @section('content')
     <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -12,9 +8,12 @@
             <h1>Create Page</h1>
             <form method="POST" action="{{ route('page.store') }}">
                 @csrf
-
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Title</label>
+                    <input type="text" name="title" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
                 <div class="form-group col-md-4">
-                    <label for="inputState">Select Nav Item</label>
+                    <label for="inputState">Nav Item</label>
                     <select id="inputState" class="form-control" name="navitem_id">
                         <option selected>Choose...</option>
                         @foreach($navitems as $item)
@@ -23,7 +22,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Page Content</label>
+                    <label for="exampleFormControlTextarea1">Content</label>
 
                     <input id="content" type="hidden" name="content">
                     <trix-editor input="content"></trix-editor>

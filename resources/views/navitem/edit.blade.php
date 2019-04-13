@@ -15,7 +15,7 @@
                     <input type="text" class="form-control" name="name" value="{{ $navitem->name }}">
                 </div>
                 <div class="form-group">
-                    <label for="navName">URI</label>
+                    <label for="navName">Uri</label>
                     <input type="text" class="form-control" name="uri" value="{{ $navitem->uri}}">
                 </div>
                 <div class="form-group">
@@ -25,13 +25,6 @@
                         @foreach($navitems as $item)
                             <option value="{{ $item->id }}">{{ $item->name }}</option>
                         @endforeach
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlSelect1">Active</label>
-                    <select class="form-control" id="exampleFormControlSelect1" name="active">
-                        <option value="1" {{ $navitem->active ? 'selected' : '' }}>Yes</option>
-                        <option value="0">No</option>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Save</button>

@@ -1,14 +1,10 @@
 @extends('layouts.admin.app')
 
-@extends('layouts.admin.nav')
-
-@extends('layouts.admin.sidebar')
-
 @section('content')
     <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
         <div class="content-wrapper">
-            <h1>Users</h1>
+            <h1>All Users</h1>
             <table class="table">
                 <thead>
                 <tr>
@@ -39,4 +35,4 @@
     </body>
     </html>
 @endsection
-// Only admin can view edit button for other users but admin cannot edit themselves
+<!-- Only admin can view edit button for other users but admin cannot edit themselves -->

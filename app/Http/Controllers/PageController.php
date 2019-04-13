@@ -17,7 +17,6 @@ class PageController extends Controller
     public function index()
     {
         $pages = Page::with('navitem')->get();
-
         return view('page.index', compact('pages'));
     }
 
@@ -41,9 +40,13 @@ class PageController extends Controller
      */
     public function store(PageRequest $request)
     {
-        $new_page = Page::create($request->validated());
+        if ($new_page = Page::create($request->validated())) {
+//            $navitem = NavItem::find($new_page->navitem_id);
+            $new_page->navitem->toggleActive();
+        }
 
-        $new_page->navitem->update(['active' => 1]);
+
+//        $new_page->navitem->update(['active' => 1]);
 
         return redirect()->route('page.index');
     }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateNavitemsTable extends Migration
+class CreateGalleryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateNavitemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('navitems', function (Blueprint $table) {
+        Schema::create('gallery', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('uri');
-            $table->boolean('parent_id')->default(0);
-            $table->tinyInteger('active')->default(0);
-            $table->tinyInteger('position')->default(0);
+            $table->string('path');
+            $table->string('type');
+            $table->timestamps();
         });
     }
 
@@ -30,6 +28,6 @@ class CreateNavitemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('navitems');
+        Schema::dropIfExists('gallery');
     }
 }
