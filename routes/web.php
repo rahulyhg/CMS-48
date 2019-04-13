@@ -46,11 +46,8 @@ Auth::routes();
 
 // Testing new code
 
-//Route::get('{slug}', 'PageController@getPage');
+Route::get('{slug}', 'PageController@getPage');
 
 Route::get('page/{page}/delete', 'PageController@destroy')->name('page.delete');
 
 Route::get('navitem/{navitem}/delete', 'NavItemController@destroy')->name('navitem.delete');
-
-// Testing Relationships
-Route::get('/test', 'RelationshipController@index');

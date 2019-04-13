@@ -28,9 +28,7 @@ class NavItemController extends Controller
      */
     public function create()
     {
-        $navitems = NavItem::all();
-
-        return view('navitem.create', compact('navitems'));
+        return view('navitem.create');
     }
 
     /**
@@ -65,9 +63,7 @@ class NavItemController extends Controller
      */
     public function edit(NavItem $navitem)
     {
-        $navitems = NavItem::all();
-
-        return view('navitem.edit', compact('navitem', 'navitems'));
+        return view('navitem.edit', compact('navitem'));
     }
 
 //    /**
