@@ -4,8 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Http\Requests\GalleryRequest;
+use App\Repositories\GalleryRepository;
+
+use App\Models\Gallery;
+
 class GalleryController extends Controller
 {
+
+    protected $gallery;
+
+    public function __construct(Gallery $gallery)
+    {
+        $this->gallery = new GalleryRepository($gallery);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -26,15 +38,16 @@ class GalleryController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function store(GalleryRequest $request)
+    { // Note: Each request is a single image
+        // Research video upload
+// The basic logic is there we just want to abstract some of this but the REpository needs the request instance
+        $file_type = $request->validated()['file']->extension();
+
+        if($this->gallery->validateFile($file_type)) {
+
+            $this->gallery->create($this->gallery->storeFile($request));
+        }
     }
 
     /**

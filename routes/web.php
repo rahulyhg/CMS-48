@@ -57,5 +57,8 @@ Route::get('page/{page}/delete', 'PageController@destroy')->name('page.delete');
 
 Route::get('navitem/{navitem}/delete', 'NavItemController@destroy')->name('navitem.delete');
 
+// Dropzone route
+Route::post('/gallery', 'GalleryController@store');
+
 // Last
 Route::get('{slug}', 'PageController@getPage');

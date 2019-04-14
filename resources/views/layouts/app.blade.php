@@ -34,20 +34,34 @@
                  <div id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     @foreach(\App\Models\NavItem::where([['active', '=', 1], ['parent_id', '=', 0]])->get() as $main_nav )
-                    <div class="navbar-nav mr-auto">
-                            <li class="{{ (\App\Models\NavItem::where('parent_id', '=', $main_nav->id)->get()->count() > 0) ? 'dropdown' : ''}}">
-                                <a class="nav-link {{ (\App\Models\NavItem::where('parent_id', '=', $main_nav->id)->get()->count() > 0) ? 'dropdown-toggle' : ''}}" href="/{{ $main_nav->uri }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {{ $main_nav->name}}
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    @foreach(\App\Models\NavItem::where([['active', '=', 1], ['parent_id', '=', $main_nav->id]])->get() as $sub_nav )
-                                        <a class="dropdown-item" href="/{{ $sub_nav->uri }}">{{ $sub_nav->name }}</a>
-                                    @endforeach
-                                </div>
-                            </li>
+                         @if($main_nav->parent_id === 0)
+                             <ul class="navbar-nav mr-auto">
+                                 <li class="nav-item"><a class="nav-link" href="/{{ $main_nav->uri }}">{{ $main_nav->name}}</a>
+
+                                     <ul>
+                                         @foreach(\App\Models\NavItem::where([['active', '=', 1], ['parent_id', '=', $main_nav->id]])->get() as $sub_nav )
+                                             <li class="nav-item"><a class="nav-link" href="/{{ $sub_nav->uri }}">{{ $sub_nav->name }}</a></li>
+                                         @endforeach
+                                     </ul>
+                                 </li>
+                             </ul>
+                                 @else
+                                     <div class="navbar-nav mr-auto">
+                                         <li class="{{ (\App\Models\NavItem::where('parent_id', '=', $main_nav->id)->get()->count() > 0) ? 'dropdown' : ''}}">
+                                             <a class="nav-link {{ (\App\Models\NavItem::where('parent_id', '=', $main_nav->id)->get()->count() > 0) ? 'dropdown-toggle' : ''}}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                 {{ $main_nav->name}}
+                                             </a>
+                                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                 @foreach(\App\Models\NavItem::where([['active', '=', 1], ['parent_id', '=', $main_nav->id]])->get() as $sub_nav )
+                                                     <a class="dropdown-item" href="/{{ $sub_nav->uri }}">{{ $sub_nav->name }}</a>
+                                                 @endforeach
+                                             </div>
+                                         </li>
+                                     </div>
+                         @endif
+
                         @endforeach
 
-                    {{--</ul>--}}
                     </div>
                 </div>
             </div>

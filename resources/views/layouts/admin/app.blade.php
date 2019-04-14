@@ -18,6 +18,9 @@
 
     <link rel="stylesheet" href="{{asset('css/app.css')}}" />
     <link rel="stylesheet" href="{{asset('css/trix.css')}}" />
+
+    <!-- Dropzone -->
+    <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
 </head>
 <header class="main-header">
 
@@ -26,7 +29,7 @@
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>CMS</b></span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>CMS</b></span>
+        <span class="logo-lg"><b>CMS</b>Destroyer</span>
     </a>
 
     <!-- Header Navbar: style can be found in header.less -->
@@ -138,3 +141,4 @@
 @yield('content')
 
 
+@yield('footer')

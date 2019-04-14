@@ -13,8 +13,10 @@ class CreateGalleryTable extends Migration
      */
     public function up()
     {
-        Schema::create('gallery', function (Blueprint $table) {
+        Schema::create('galleries', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('original_name');
+            $table->string('mime_type');
             $table->string('path');
             $table->string('type');
             $table->timestamps();
@@ -28,6 +30,6 @@ class CreateGalleryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gallery');
+        Schema::dropIfExists('galleries');
     }
 }
