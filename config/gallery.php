@@ -7,9 +7,11 @@ return [
     ],
 
     'document' => [
-
+        'path' => 'Documents',
+        'type' => 'document'
     ],
     'other' => [
-
+        'path' => 'Other',
+        'type' => 'other'
     ]
 ];

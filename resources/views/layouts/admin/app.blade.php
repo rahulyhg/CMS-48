@@ -122,6 +122,22 @@
 	            </span>
                 </a>
             </li>
+            <li class="treeview menu-open {{ Request::is('communities') || Request::is('communities/*') ? 'active' : '' }}">
+                <a href="#">
+                    <i class="fas fa-home mr-4"></i> <span>Communities</span>
+                    <span class="pull-right-container">
+	              <i class="fa fa-angle-left pull-right"></i>
+                        <!-- sub nav -->
+	                <ul class="treeview-menu">
+	                    <li class="{{ Request::is('message') || Request::is('message/*') ? 'active' : '' }}"><a href="{{ route('state.index') }}"><i class="fas fa-chevron-right"></i> State</a></li>
+	                    <li class="{{ Request::is('message') || Request::is('message/*') ? 'active' : '' }}"><a href="{{ route('metroarea.index') }}"><i class="fas fa-chevron-right"></i> Metro Area</a></li>
+	                    <li class="{{ Request::is('message') || Request::is('message/*') ? 'active' : '' }}"><a href="{{ route('city.index') }}"><i class="fas fa-chevron-right"></i> City</a></li>
+	                    <li class="{{ Request::is('message') || Request::is('message/*') ? 'active' : '' }}"><a href="{{ route('message.index') }}"><i class="fas fa-chevron-right"></i> Home Models</a></li>
+	                    <li class="{{ Request::is('message') || Request::is('message/*') ? 'active' : '' }}"><a href="{{ route('message.index') }}"><i class="fas fa-chevron-right"></i> Inventory Homes</a></li>
+	                </ul>
+	            </span>
+                </a>
+            </li>
             <li class="treeview menu-open {{ Request::is('users') || Request::is('users/*') ? 'active' : '' }}">
                 <a href="#">
                     <i class="fas fa-cogs mr-4"></i><span>Settings</span>

@@ -32,6 +32,20 @@
 
             <img src="removebutton.png" alt="Click me to remove the file." data-dz-remove />
 
+            {{ $files }}
+
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Images</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Documents</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Other</a>
+                </li>
+            </ul>
+
         </div>
     </div>
     <script src="{{ asset('js/app.js') }}"></script>
@@ -44,5 +58,16 @@
 
     <script>
         console.log(window.Dropzone);
+        //
+        // Dropzone.options.myAwesomeDropzone = {
+        //     addedfile: function(file) {
+        //         file.previewElement = Dropzone.createElement(this.options.previewTemplate);
+        //         // Now attach this new element some where in your page
+        //     },
+        // };
+        //
+        // Dropzone.on("complete", function(file) {
+        //     myDropzone.removeFile(file);
+        // });
     </script>
 @endsection

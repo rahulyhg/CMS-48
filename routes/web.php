@@ -36,7 +36,12 @@ Route::middleware(['auth'])->group(function () {
         'navitem' => 'NavItemController',
         'message' => 'MessageController',
         'users' => 'UserController',
-        'gallery' => 'GalleryController'
+        'gallery' => 'GalleryController',
+        'state' => 'StateController',
+        'metroarea' => 'MetroAreaController',
+        'city' => 'CityController',
+        'home-model' => 'HomeModelController',
+        'inventory-home' => 'InventoryHomeController'
 
     ]);
 });

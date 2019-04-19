@@ -27,17 +27,16 @@ class GalleryRepository extends Repository
     public function validateFile($file_type)
     {
         foreach($this->fileMap as $key => $value) {
-            if(in_array($file_type, array_values($value))) {
-
+            if(in_array($file_type, $value)) {
                 $this->file_type = $key;
 
-                return true;
+                return;
             }
-        } // What if the file type is not listed? Maybe have a default other place to store the file
+        }
 
-        $this->file_type = 'other'; // default
+        $this->file_type = 'other';
 
-        return false;
+        return;
     }
 
     public function fetchFileConfig():array

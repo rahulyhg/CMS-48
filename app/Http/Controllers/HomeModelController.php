@@ -4,20 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests\GalleryRequest;
-use App\Repositories\GalleryRepository;
-
-use App\Models\Gallery;
-
-class GalleryController extends Controller
+class HomeModelController extends Controller
 {
-
-    protected $gallery;
-
-    public function __construct(Gallery $gallery)
-    {
-        $this->gallery = new GalleryRepository($gallery);
-    }
     /**
      * Display a listing of the resource.
      *
@@ -25,9 +13,7 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        $files = Gallery::all();
-
-        return view('gallery.index', compact('files'));
+        //
     }
 
     /**
@@ -40,17 +26,15 @@ class GalleryController extends Controller
         //
     }
 
-    public function store(GalleryRequest $request)
-    { // Note: Each request is a single image
-        // Research video upload
-        $file_type = $request->validated()['file']->extension();
-
-        $this->gallery->validateFile($file_type);
-
-        $file = $this->gallery->storeFile($request);
-
-                $this->gallery->create($file);
-
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
     }
 
     /**
@@ -61,7 +45,7 @@ class GalleryController extends Controller
      */
     public function show($id)
     {
-
+        //
     }
 
     /**
